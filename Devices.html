@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devices</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+
+        :root {
+            --orange: rgb(113, 69, 236);
+            --black: #130f40;
+            --light-color: #666;
+            --box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .1);
+            --border: .2rem solid rgba(0, 0, 0, .1);
+            --outline: .1rem solid rgba(0, 0, 0, .1);
+            --outline-hover: .2rem solid var(--black);
+        }
+
+        * {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            text-transform: capitalize;
+            transition: all .2s linear;
+        }
+
+        html {
+            font-size: 62.5%;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            scroll-padding-top: 7rem;
+        }
+
+        body {
+            background: #eee;
+        }
+
+        section {
+            padding: 2rem 9%;
+        }
+
+        .heading {
+            text-align: center;
+            padding: 2rem 0;
+            padding-bottom: 3rem;
+            font-size: 3.5rem;
+            color: var(--black);
+        }
+
+        .heading span {
+            background: var(--orange);
+            color: #fff;
+            display: inline-block;
+            padding: .5rem 3rem;
+            clip-path: polygon(100% 0, 93% 50%, 100% 99%, 0% 100%, 7% 50%, 0% 0%);
+        }
+
+        .btn {
+            margin-top: 1rem;
+            display: inline-block;
+            padding: .8rem 3rem;
+            font-size: 1.7rem;
+            border-radius: .5rem;
+            border: .2rem solid var(--black);
+            color: var(--black);
+            cursor: pointer;
+            background: none;
+        }
+
+        .btn:hover {
+            background: var(--orange);
+            color: #fff;
+        }
+
+
+
+
+
+        .features .box-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+            gap: 1.5rem;
+        }
+
+        .features .box-container .box {
+            padding: 3rem 2rem;
+            background: #fff;
+            outline: var(--outline);
+            outline-offset: -1rem;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+        }
+
+        .features .box-container .box:hover {
+            outline: var(--outline-hover);
+            outline-offset: 0rem;
+        }
+
+        .features .box-container .box img {
+            margin: 1rem 0;
+            height: 15rem;
+        }
+
+        .features .box-container .box h3 {
+            font-size: 2.5rem;
+            line-height: 1.8;
+            color: var(--black);
+        }
+
+        .features .box-container .box p {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            color: var(--light-color);
+            padding: 1rem 0;
+        }
+
+        .products .product-slider {
+            padding: 1rem;
+        }
+
+        .products .product-slider:first-child {
+            margin-bottom: 2rem;
+        }
+
+        .products .product-slider .box {
+            background: #fff;
+            border-radius: .5rem;
+            text-align: center;
+            padding: 3rem 2rem;
+            outline-offset: -1rem;
+            outline: var(--outline);
+            box-shadow: var(--box-shadow);
+            transition: .2s linear;
+        }
+
+        .products .product-slider .box:hover {
+            outline-offset: 0rem;
+            outline: var(--outline-hover);
+        }
+
+        .products .product-slider .box img {
+            height: 20rem;
+        }
+
+        .products .product-slider .box h3 {
+            font-size: 2.5rem;
+            color: var(--black);
+        }
+
+        .products .product-slider .box .price {
+            font-size: 2rem;
+            color: var(--light-color);
+            padding: .5rem 0;
+        }
+
+        .products .product-slider .box .stars i {
+            font-size: 1.7rem;
+            color: var(--orange);
+            padding: .5rem 0;
+        }
+
+        .categories .box-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+            gap: 1.5rem;
+        }
+
+        .categories .box-container .box {
+            padding: 3rem 2rem;
+            border-radius: .5rem;
+            background: #fff;
+            box-shadow: var(--box-shadow);
+            outline: var(--outline);
+            outline-offset: -1rem;
+            text-align: center;
+        }
+
+        .categories .box-container .box:hover {
+            outline: var(--outline-hover);
+            outline-offset: 0rem;
+        }
+
+        .categories .box-container .box img {
+            margin: 1rem 0;
+            height: 15rem;
+        }
+
+        .categories .box-container .box h3 {
+            font-size: 2rem;
+            color: var(--black);
+            line-height: 1.8;
+        }
+
+        .categories .box-container .box p {
+            font-size: 1.7rem;
+            color: var(--light-color);
+            line-height: 1.8;
+            padding: 1rem 0;
+        }
+
+
+        /* navbar */
+
+        .header {
+            /* min-height: 2vh; */
+            width: 100%;
+            background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(Images/smbd.jpg);
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+
+
+        nav {
+            display: flex;
+            padding: 2% 6%;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav img {
+            width: 100px;
+        }
+
+        .nav-links {
+            flex: 1;
+            text-align: right;
+        }
+
+        .nav-links ul li {
+            list-style: none;
+            display: inline-block;
+            padding: 8px 12px;
+            position: relative;
+
+        }
+
+        .nav-links ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .nav-links ul li::after {
+            content: '';
+            width: 0%;
+            height: 2px;
+            background: #3643f4;
+            display: block;
+            margin: auto;
+            transition: 0.5s;
+        }
+
+        .nav-links ul li:hover::after {
+            width: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- <section class="header">
+        <nav>
+            <a href="index.html"><img src="Images/logo.png"></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-cross" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="Devices.html">DEVICES</a></li>
+
+                    <li><a href="AboutUS.html">ABOUT US</a></li>
+                    <li><a href="ContactUs.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+
+    </section> -->
+
+
+
+    <section class="features" id="features">
+
+        <h1 class="heading"> Smart <span>Devices</span> </h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <img src="images\googlehome.png" alt="">
+                <h3>Google Home
+                    Voice controller</h3>
+                <p>Google Home, the connected voice controller from Google. Besides controlling your home it also comes
+                    with Google Assistant, helping with lists, translation, news, music, calendar and many many more.
+                </p>
+                <a href="https://youtu.be/r0iLfAV0pIg" class="btn">Video For More</a>
+            </div>
+
+            <div class="box">
+                <img src="images\nestincam.jpg" alt="">
+                <h3>Nest Cam - Indoor camera</h3>
+                <p>
+
+                    Nest Cam Outdoor is the monitoring tool you've been waiting for. It brings all the benefits of
+                    modern streaming technology and a sleek design so you can watch your home from anywhere.</p>
+                <a href="https://youtu.be/orc5fBf14vs" class="btn">Video For More</a>
+            </div>
+
+            <div class="box">
+                <img src="images\nestthermostat.jpg" alt="">
+                <h3>Nest Thermostat - Smart Thermostat</h3>
+                <p>The Nest Thermostat learns what temperature you like and builds a schedule around yours. Also, it
+                    will send you an alert when the temperatures are threatening to ruin your belongings and appliances.
+                </p>
+                <a href"https://youtu.be/1qkSkOn4h-A" class="btn">Video For More</a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="products" id="products">
+
+        <!-- <h1 class="heading"> our <span>products</span> </h1> -->
+
+        <div class="swiper product-slider">
+
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide box">
+                    <img src="images\amazonechospot.jpg" alt="">
+                    <h3>Amazon Echo Spot - Smart Alarm Clock</h3>
+                    <div class="price">Amazon Echo Spot is a smart alarm clock that can make video calls, with a tiny
+                        2.5-inch screen, or become a nursery camera. It can also be connected to external speakers,
+                        either through cable or Bluetooth.</div>
+
+                    <a href="https://youtu.be/_DAUmz188l8" class="btn">Video For More</a>
+                </div>
+
+                <div class="swiper-slide box">
+                    <img src="image/product-2.png" alt="">
+                    <h3>fresh onion</h3>
+                    <div class="price"> $4.99/- - 10.99/- </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <a href="#" class="btn">Video For More</a>
+                </div>
+
+                <div class="swiper-slide box">
+                    <img src="image/product-3.png" alt="">
+                    <h3>fresh meat</h3>
+                    <div class="price"> $4.99/- - 10.99/- </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <a href="#" class="btn">Video For More</a>
+                </div>
+
+                <div class="swiper-slide box">
+                    <img src="image/product-4.png" alt="">
+                    <h3>fresh cabbage</h3>
+                    <div class="price"> $4.99/- - 10.99/- </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <a href="#" class="btn">Video For More</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="swiper product-slider">
+
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide box">
+                    <img src="images\nestoutcam (1).jpg" alt="">
+                    <h3>Nest Cam Outdoor - Outdoor camera</h3>
+                    <div class="price"> With one app for all your Nest products, the unique magnetic mount, full 1080p
+                        HD video streaming and advanced Night Vision, Nest Cam Outdoor enables you to take care of what
+                        matters 24/7. </div>
+
+                    <a href="https://youtu.be/ciuIYGr5bfQ" class="btn">Video For More</a>
+                </div>
+
+                <div class="swiper-slide box">
+                    <img src="image/product-6.png" alt="">
+                    <h3>fresh avocado</h3>
+                    <div class="price"> $4.99/- - 10.99/- </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <a href="#" class="btn">add to cart</a>
+                </div>
+
+                <div class="swiper-slide box">
+                    <img src="image/product-7.png" alt="">
+                    <h3>fresh carrot</h3>
+                    <div class="price"> $4.99/- - 10.99/- </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <a href="#" class="btn">add to cart</a>
+                </div>
+
+                <div class="swiper-slide box">
+                    <img src="image/product-8.png" alt="">
+                    <h3>green lemon</h3>
+                    <div class="price"> $4.99/- - 10.99/- </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <a href="#" class="btn">add to cart</a>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+    <!-- products section ends -->
+
+    <!-- categories section starts  -->
+
+    <section class="categories" id="categories">
+
+        <!-- <h1 class="heading"> product <span>categories</span> </h1> -->
+
+        <div class="box-container">
+
+            <div class="box">
+                <img src="images\nestprotect.png" alt="">
+                <h3>Nest Protect - Smoke and CO detector</h3>
+                <p>Nest Protect is the smoke alarm other alarms look up to. With an industrial-grade smoke sensor,
+                    automatic self testing, it's the first home alarm you can hush from your phone without any extra
+                    hardware.</p>
+                <a href="https://youtu.be/METDdcmklVE" class="btn">Video For More</a>
+            </div>
+
+            <div class="box">
+                <img src="images\singlecue.png" alt="">
+                <h3>Singlecue - Gesture Controller</h3>
+                <p>With singlecue you can control your TV, media and smart homes devices using touch-free gestures
+                </p>
+                <a href="https://youtu.be/4WVGtRirzro" class="btn">Video For More</a>
+            </div>
+
+            <div class="box">
+                <img src="images\logitechcircle.png" alt="">
+                <h3>Logitech Circle - Portable Wi-Fi video camera</h3>
+                <p>The smart home security camera that helps you keep home safe and stay connected - all from your
+                    smartphone. Comes with AES encryption and free private 24-hour secure cloud storage for your total
+                    peace of mind</p>
+                <a href="https://youtu.be/Da7JJBZ00K8" class="btn">Video For More</a>
+            </div>
+
+            <div class="box">
+                <img src="images\logitechpop.jpg" alt="">
+                <h3>Logitech Pop
+                    Smart button controller</h3>
+                <p>POP Home Switch lets everyone in the home control smart lighting, music, and more with the push of a
+                    button. Program each switch with up to three custom commands to add creativity throughout your smart
+                    home.</p>
+                <a href="https://youtu.be/G0Kr8NtlY7I" class="btn">Video For More</a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+</body>
+
+</html>
